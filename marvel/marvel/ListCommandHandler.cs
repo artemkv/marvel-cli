@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using marvel.sdk;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -18,8 +19,20 @@ namespace marvel
 		{
 			try
 			{
-				// TODO: use options to construct the url
-				GetCreatorsResponse response = GetResponseAsync(options.Url).Result;
+				DateTime? modifiedSince = null;
+				if (!String.IsNullOrEmpty(options.ModifiedSince))
+				{
+					// Parses using the same rules as when printing date to screen.
+					// This should allow you to copy-paste date from the output directly to the command line,
+					// whatever locale you are in.
+					modifiedSince = DateTime.Parse(options.ModifiedSince);
+				}
+				GetCreatorsResponse response = MarvelApi.GetCreatorsAsync(
+					options.Url,
+					options.FullName,
+					modifiedSince,
+					options.Page,
+					options.Size).Result;
 				Console.WriteLine($"Page number: {response.PageNumber}");
 				Console.WriteLine($"Page size: {response.PageSize}");
 				Console.WriteLine($"Showing {response.Count} of total {response.Total} results.");
@@ -36,25 +49,12 @@ namespace marvel
 
 				return 0;
 			}
-			catch (HttpRequestException e)
+			catch (Exception e)
 			{
 				Console.WriteLine("Error retrieving creators:");
 				Console.WriteLine(e.Message);
 				return -1;
 			}
-		}
-
-		private static async Task<GetCreatorsResponse> GetResponseAsync(String url)
-		{
-			var response = await HttpClientProvider.HttpClient.GetAsync(url);
-
-			if (response.IsSuccessStatusCode)
-			{
-				var results = JsonConvert.DeserializeObject<GetCreatorsResponse>(await response.Content.ReadAsStringAsync());
-				return results;
-			}
-
-			throw new HttpRequestException(((int)response.StatusCode).ToString() + " " + response.ReasonPhrase);
 		}
 	}
 }

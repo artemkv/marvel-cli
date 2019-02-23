@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace marvel
+namespace marvel.sdk
 {
 	/// <summary>
 	/// Contains response data with the list of creators retrieved from the server.
 	/// </summary>
 	[DataContract]
-	class GetCreatorsResponse
+	public class GetCreatorsResponse
 	{
 		[DataMember(Name = "pageNumber")]
 		public int PageNumber { get; private set; }

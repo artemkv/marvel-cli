@@ -10,8 +10,8 @@ namespace marvel
 	/// </summary>
 	class CommonOptions
 	{
-		[Option("url", Required = false, 
-			Default = "http://localhost:8080/api/creators", 
+		[Option("url", Required = false,
+			Default = "http://localhost:8080/api/",
 			HelpText = "Url to use for connection.")]
 		public string Url { get; set; }
 	}

@@ -2,7 +2,7 @@
   "profiles": {
     "marvel": {
       "commandName": "Project",
-      "commandLineArgs": "list"
+      "commandLineArgs": "list --modifiedsince \"09/06/2015 17:20:52\""
     }
   }
 }

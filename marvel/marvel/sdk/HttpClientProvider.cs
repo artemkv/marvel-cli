@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 
-namespace marvel
+namespace marvel.sdk
 {
 	/// <summary>
 	/// Provides the HttpClient object for anyone who needs it.

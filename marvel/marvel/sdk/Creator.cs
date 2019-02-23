@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace marvel
+namespace marvel.sdk
 {
 	/// <summary>
 	/// Contains creator data retrieved from the server.
 	/// </summary>
 	[DataContract]
-	class Creator
+	public class Creator
 	{
 		[DataMember(Name = "id")]
 		public int Id { get; private set; }
