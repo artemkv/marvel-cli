@@ -17,10 +17,7 @@ namespace marvel
 
 		static int ListCreators(ListOptions options)
 		{
-			Console.WriteLine("test");
-			Console.WriteLine("test1");
-
-			return 0;
+			return ListCommandHandler.Execute(options);
 		}
 
 		static int AddNote(AddNoteOptions options)

@@ -5,8 +5,11 @@ using System.Text;
 
 namespace marvel
 {
+	/// <summary>
+	/// Command line options for add note command.
+	/// </summary>
 	[Verb("addnote", HelpText = "Adds a note to a creator. If note already exists, overwrites it.")]
-	class AddNoteOptions
+	class AddNoteOptions : CommonOptions
 	{
 		[Option('c', "creatorid", Required = true, HelpText = "Creator id to add note to.")]
 		public string CreatorId { get; set; }

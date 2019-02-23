@@ -6,8 +6,11 @@ using System.Text;
 
 namespace marvel
 {
+	/// <summary>
+	/// Command line options for list command.
+	/// </summary>
 	[Verb("list", HelpText = "Shows the lists of creators.")]
-	class ListOptions
+	class ListOptions : CommonOptions
 	{
 		[Option('f', "fullname", Required = false, HelpText = "Find creator by exact full name match.")]
 		public string FullName { get; set; }
@@ -17,5 +20,11 @@ namespace marvel
 
 		[Option('s', "sortby", Required = false, HelpText = "Fields to sort by.")]
 		public IEnumerable<string> Sorting { get; set; }
+
+		[Option('p', "page", Required = false, Default = 0, HelpText = "Page number.")]
+		public int Page { get; set; }
+
+		[Option('z', "size", Required = false, Default = 10, HelpText = "Page size.")]
+		public int Size { get; set; }
 	}
 }

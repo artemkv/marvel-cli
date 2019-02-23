@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "marvel": {
+      "commandName": "Project",
+      "commandLineArgs": "list"
+    }
+  }
+}
