@@ -44,7 +44,7 @@ Run "marvel help" to see the available commands.
 marvel help
 ```
 
-Run "marvel help <command>" to see the available commands.
+Run "marvel help &lt;command&gt;" to the command-specific help.
 
 ```
 marvel help find
