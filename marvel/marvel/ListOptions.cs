@@ -9,7 +9,7 @@ namespace marvel
 	/// <summary>
 	/// Command line options for list command.
 	/// </summary>
-	[Verb("list", HelpText = "Shows the lists of creators.")]
+	[Verb("list", HelpText = "Shows the lists of creators with sorting and paging.")]
 	class ListOptions : CommonOptions
 	{
 		[Option('f', "fullname", Required = false, HelpText = "Find creator by exact full name match.")]

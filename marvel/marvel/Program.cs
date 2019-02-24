@@ -7,12 +7,18 @@ namespace marvel
 	{
 		static void Main(string[] args)
 		{
-			Parser.Default.ParseArguments<ListOptions, AddNoteOptions, DeleteNoteOptions>(args)
+			Parser.Default.ParseArguments<FindOptions, ListOptions, AddNoteOptions, DeleteNoteOptions>(args)
 				.MapResult(
+					(FindOptions options) => FindCreator(options),
 					(ListOptions options) => ListCreators(options),
 					(AddNoteOptions options) => AddNote(options),
 					(DeleteNoteOptions options) => DeleteNote(options),
 					errs => 1);
+		}
+
+		static int FindCreator(FindOptions options)
+		{
+			return FindCommandHandler.Execute(options);
 		}
 
 		static int ListCreators(ListOptions options)

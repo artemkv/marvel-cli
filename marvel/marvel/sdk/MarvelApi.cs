@@ -13,6 +13,38 @@ namespace marvel.sdk
 	/// </summary>
 	public static class MarvelApi
 	{
+		/// <summary>
+		/// Returns the creator by id.
+		/// </summary>
+		/// <param name="url">Base url to connect to server.</param>
+		/// <param name="id">Id of the creator.</param>
+		/// <returns>The creator.</returns>
+		public static async Task<Creator> GetCreatorAsync(string url, int id)
+		{
+			var baseUrl = new Uri(url);
+			var creatorUrl = new Uri(baseUrl, @"creator/" + id.ToString());
+			var response = await HttpClientProvider.HttpClient.GetAsync(creatorUrl);
+
+			if (response.IsSuccessStatusCode)
+			{
+				var results = JsonConvert.DeserializeObject<Creator>(await response.Content.ReadAsStringAsync());
+				return results;
+			}
+
+			var error = JsonConvert.DeserializeObject<ErrorResponse>(await response.Content.ReadAsStringAsync());
+			throw new HttpRequestException(((int)response.StatusCode).ToString() + " " + error.Message);
+		}
+
+		/// <summary>
+		/// Returns the list of creators with paging and sorting.
+		/// </summary>
+		/// <param name="url">Base url to connect to server.</param>
+		/// <param name="fullName">Full name of the creator.</param>
+		/// <param name="modifiedSince">Modified since criteria.</param>
+		/// <param name="page">Page number (0-based).</param>
+		/// <param name="size">Page size (max 1000 accepted by server).</param>
+		/// <param name="sorting">List of sorting criterias.</param>
+		/// <returns></returns>
 		public static async Task<GetCreatorsResponse> GetCreatorsAsync(
 			string url, string fullName, DateTime? modifiedSince, int page, int size, IEnumerable<string> sorting)
 		{
@@ -38,7 +70,8 @@ namespace marvel.sdk
 				return results;
 			}
 
-			throw new HttpRequestException(((int)response.StatusCode).ToString() + " " + response.ReasonPhrase);
+			var error = JsonConvert.DeserializeObject<ErrorResponse>(await response.Content.ReadAsStringAsync());
+			throw new HttpRequestException(((int)response.StatusCode).ToString() + " " + error.Message);
 		}
 
 		private static Uri AppendSortingParams(Uri uri, IEnumerable<string> sorting)
