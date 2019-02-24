@@ -18,11 +18,15 @@ namespace marvel
 				Creator creator = MarvelApi.GetCreatorAsync(options.Url, options.Id).Result;
 
 				Console.WriteLine(
-					"    Id FullName                                            Modified Comics Series");
+					"    Id FullName                                           Modified Comics Series");
 				Console.WriteLine(
-					"---------------------------------------------------------------------------------");
+					"--------------------------------------------------------------------------------");
 				Console.WriteLine(
 					$"{creator.Id,6} {creator.FullName,-30}{creator.Modified,30}{creator.ComicsTotal,6}{creator.SeriesTotal,6}");
+				if (options.ShowNotes && creator.Note != null)
+				{
+					Console.WriteLine($"Note: [{creator.Note.Text}]");
+				}
 
 				return 0;
 			}

@@ -2,7 +2,7 @@
   "profiles": {
     "marvel": {
       "commandName": "Project",
-      "commandLineArgs": "find --id 12"
+      "commandLineArgs": "find --id 12976 n"
     }
   }
 }

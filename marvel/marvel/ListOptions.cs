@@ -26,5 +26,8 @@ namespace marvel
 
 		[Option('z', "size", Required = false, Default = 10, HelpText = "Page size.")]
 		public int Size { get; set; }
+
+		[Option('n', "shownotes", Required = false, HelpText = "Specifies whether or not to show the note text.")]
+		public bool ShowNotes { get; set; }
 	}
 }

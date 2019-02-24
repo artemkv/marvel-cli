@@ -13,5 +13,8 @@ namespace marvel
 	{
 		[Option("id", Required = true, HelpText = "Creator id.")]
 		public int Id { get; set; }
+
+		[Option('n', "shownotes", Required = false, HelpText = "Specifies whether or not to show the note text.")]
+		public bool ShowNotes { get; set; }
 	}
 }

@@ -21,5 +21,7 @@ namespace marvel.sdk
 		public int ComicsTotal { get; private set; }
 		[DataMember(Name = "seriesTotal")]
 		public int SeriesTotal { get; private set; }
+		[DataMember(Name = "note")]
+		public Note Note { get; private set; }
 	}
 }

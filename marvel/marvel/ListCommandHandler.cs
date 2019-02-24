@@ -39,13 +39,17 @@ namespace marvel
 				Console.WriteLine($"Showing {response.Count} of total {response.Total} results.");
 				Console.WriteLine();
 				Console.WriteLine(
-					"    Id FullName                                            Modified Comics Series");
+					"    Id FullName                                           Modified Comics Series");
 				Console.WriteLine(
-					"---------------------------------------------------------------------------------");
+					"--------------------------------------------------------------------------------");
 				foreach (var creator in response.Creators)
 				{
 					Console.WriteLine(
 						$"{creator.Id,6} {creator.FullName,-30}{creator.Modified,30}{creator.ComicsTotal,6}{creator.SeriesTotal,6}");
+					if (options.ShowNotes && creator.Note != null)
+					{
+						Console.WriteLine($"Note: [{creator.Note.Text}]");
+					}
 				}
 
 				return 0;
