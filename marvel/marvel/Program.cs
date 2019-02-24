@@ -28,9 +28,7 @@ namespace marvel
 
 		static int AddNote(AddNoteOptions options)
 		{
-			Console.WriteLine("add note");
-
-			return 0;
+			return AddNoteCommandHandler.Execute(options);
 		}
 
 		static int DeleteNote(DeleteNoteOptions options)

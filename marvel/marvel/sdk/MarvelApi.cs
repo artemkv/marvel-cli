@@ -22,7 +22,7 @@ namespace marvel.sdk
 		public static async Task<Creator> GetCreatorAsync(string url, int id)
 		{
 			var baseUrl = new Uri(url);
-			var creatorUrl = new Uri(baseUrl, @"creator/" + id.ToString());
+			var creatorUrl = new Uri(baseUrl, $"creator/{id.ToString()}");
 			var response = await HttpClientProvider.HttpClient.GetAsync(creatorUrl);
 
 			if (response.IsSuccessStatusCode)
@@ -72,6 +72,36 @@ namespace marvel.sdk
 
 			var error = JsonConvert.DeserializeObject<ErrorResponse>(await response.Content.ReadAsStringAsync());
 			throw new HttpRequestException(((int)response.StatusCode).ToString() + " " + error.Message);
+		}
+
+		/// <summary>
+		/// Adds the note to the creator with given id.
+		/// If the note already exists, overwrites its text.
+		/// </summary>
+		/// <param name="url">Base url to connect to server.</param>
+		/// <param name="id">Id of the creator.</param>
+		/// <param name="text">Text of the note</param>
+		/// <returns>Nothing</returns>
+		public static async Task AddNoteAsync(string url, int id, string text)
+		{
+			var note = new NoteToPost
+			{
+				Text = text
+			};
+
+			var baseUrl = new Uri(url);
+			var noteUrl = new Uri(baseUrl, $"creator/{id.ToString()}/note");
+
+			var content = new StringContent(JsonConvert.SerializeObject(note));
+			content.Headers.Remove("Content-Type");
+			content.Headers.Add("Content-Type", "application/json");
+
+			var response = await HttpClientProvider.HttpClient.PutAsync(noteUrl, content);
+			if (!response.IsSuccessStatusCode)
+			{
+				var error = JsonConvert.DeserializeObject<ErrorResponse>(await response.Content.ReadAsStringAsync());
+				throw new HttpRequestException(((int)response.StatusCode).ToString() + " " + error.Message);
+			}
 		}
 
 		private static Uri AppendSortingParams(Uri uri, IEnumerable<string> sorting)
