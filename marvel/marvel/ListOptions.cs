@@ -29,5 +29,19 @@ namespace marvel
 
 		[Option('n', "shownotes", Required = false, HelpText = "Specifies whether or not to show the note text.")]
 		public bool ShowNotes { get; set; }
+
+		[Usage(ApplicationAlias = "marvel")]
+		public static IEnumerable<Example> Examples
+		{
+			get
+			{
+				yield return new Example("Normal scenario", new ListOptions { });
+				yield return new Example("Paging", new ListOptions { Page = 2, Size = 20 });
+				yield return new Example("Use modified since filter", new ListOptions { ModifiedSince = "2015-01-01 00:00:00", Page = 2, Size = 20 });
+				yield return new Example("Search by full name", new ListOptions { FullName = "Rick Remender" });
+				yield return new Example("Sorting with paging", new ListOptions { Sorting = new List<String>() { "comicsTotal,desc", "fullName" }, Page = 2, Size = 20 });
+				yield return new Example("Provide server url", new FindOptions { Url = "http://192.168.1.8:8080/api/" });
+			}
+		}
 	}
 }
