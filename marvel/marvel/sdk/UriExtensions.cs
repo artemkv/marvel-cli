@@ -6,7 +6,8 @@ using System.Web;
 namespace marvel.sdk
 {
 	/// <summary>
-	/// Stolen from https://stackoverflow.com/questions/14517798/append-values-to-query-string
+	/// Copy-paste from StackOverflow
+	/// https://stackoverflow.com/questions/14517798/append-values-to-query-string
 	/// </summary>
 	static class UriExtensions
 	{
