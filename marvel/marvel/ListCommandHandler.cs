@@ -32,7 +32,8 @@ namespace marvel
 					options.FullName,
 					modifiedSince,
 					options.Page,
-					options.Size).Result;
+					options.Size,
+					options.Sorting).Result;
 				Console.WriteLine($"Page number: {response.PageNumber}");
 				Console.WriteLine($"Page size: {response.PageSize}");
 				Console.WriteLine($"Showing {response.Count} of total {response.Total} results.");
