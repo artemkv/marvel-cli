@@ -14,6 +14,22 @@ It does not provide any validation logic and simply passes the parameters to the
 
 ## Build and run the project
 
+Run to build for Windows:
+
+```
+dotnet publish -r win-x64 -c release
+```
+
+The build output can be found in \marvel\bin\Release\netcoreapp2.1\win-x64\publish
+
+Run to build for Linux:
+
+```
+dotnet publish -r linux-x64 -c release
+```
+
+The build output can be found in \marvel\bin\Release\netcoreapp2.1\linux-x64\publish
+
 ## Dependencies
 
 * .Net Core 2.1
