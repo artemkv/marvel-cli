@@ -33,9 +33,7 @@ namespace marvel
 
 		static int DeleteNote(DeleteNoteOptions options)
 		{
-			Console.WriteLine("delete note");
-
-			return 0;
+			return DeleteNoteCommandHandler.Execute(options);
 		}
 	}
 }

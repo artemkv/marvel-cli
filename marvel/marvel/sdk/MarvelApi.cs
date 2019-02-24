@@ -79,10 +79,10 @@ namespace marvel.sdk
 		/// If the note already exists, overwrites its text.
 		/// </summary>
 		/// <param name="url">Base url to connect to server.</param>
-		/// <param name="id">Id of the creator.</param>
+		/// <param name="creatorId">Id of the creator.</param>
 		/// <param name="text">Text of the note</param>
 		/// <returns>Nothing</returns>
-		public static async Task AddNoteAsync(string url, int id, string text)
+		public static async Task AddNoteAsync(string url, int creatorId, string text)
 		{
 			var note = new NoteToPost
 			{
@@ -90,13 +90,32 @@ namespace marvel.sdk
 			};
 
 			var baseUrl = new Uri(url);
-			var noteUrl = new Uri(baseUrl, $"creator/{id.ToString()}/note");
+			var noteUrl = new Uri(baseUrl, $"creator/{creatorId.ToString()}/note");
 
 			var content = new StringContent(JsonConvert.SerializeObject(note));
 			content.Headers.Remove("Content-Type");
 			content.Headers.Add("Content-Type", "application/json");
 
 			var response = await HttpClientProvider.HttpClient.PutAsync(noteUrl, content);
+			if (!response.IsSuccessStatusCode)
+			{
+				var error = JsonConvert.DeserializeObject<ErrorResponse>(await response.Content.ReadAsStringAsync());
+				throw new HttpRequestException(((int)response.StatusCode).ToString() + " " + error.Message);
+			}
+		}
+
+		/// <summary>
+		/// Deletes the note for the creator with given id.
+		/// </summary>
+		/// <param name="url">Base url to connect to server.</param>
+		/// <param name="creatorId">Id of the creator.</param>
+		/// <returns>Nothing</returns>
+		public static async Task DeleteNoteAsync(string url, int creatorId)
+		{
+			var baseUrl = new Uri(url);
+			var noteUrl = new Uri(baseUrl, $"creator/{creatorId.ToString()}/note");
+
+			var response = await HttpClientProvider.HttpClient.DeleteAsync(noteUrl);
 			if (!response.IsSuccessStatusCode)
 			{
 				var error = JsonConvert.DeserializeObject<ErrorResponse>(await response.Content.ReadAsStringAsync());

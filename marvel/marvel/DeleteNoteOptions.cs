@@ -12,6 +12,6 @@ namespace marvel
 	class DeleteNoteOptions : CommonOptions
 	{
 		[Option('c', "creatorid", Required = true, HelpText = "Creator id to delete note for.")]
-		public string CreatorId { get; set; }
+		public int CreatorId { get; set; }
 	}
 }
