@@ -37,3 +37,41 @@ The build output can be found in \marvel\bin\Release\netcoreapp2.1\linux-x64\pub
 * Newtonsoft.Json (A popular high-performance JSON framework for .NET)
 
 ## Command line arguments
+
+Run "marvel help" to see the available commands.
+
+```
+marvel help
+```
+
+Run "marvel help <command>" to see the available commands.
+
+```
+marvel help find
+```
+
+### Commands
+
+* __help__ - Prints the help.
+* __version__ - Prints the version info.
+* __find__ - Finds the creator by id.
+* __list__ - Shows the lists of creators with sorting and paging.
+* __addnote__ - Adds a note to a creator. If note already exists, overwrites it.
+* __deletenote__ - Deletes a note for a creator.
+
+### Examples
+
+```
+marvel list
+marvel list --page 3 --size 5
+marvel list --n --page 3 --size 5
+marvel list --fullname "Rick Remender"
+marvel list --modifiedsince "09/06/2015 17:20:52"
+marvel list --modifiedsince "2015-01-01 00:00:00"
+marvel list --modifiedsince "2015-01-01 00:00:00" --page 3 --size 5
+marvel list --fullname "Rick Remender" --modifiedsince "09/06/2015 17:20:51"
+marvel list --page 3 --size 5 --sortby comicsTotal,desc fullName
+marvel find --id 12976 --n
+marvel addnote --c 12976 --text "Hello note"
+marvel deletenote --c 12976
+```
