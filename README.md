@@ -22,7 +22,7 @@ Run to build for Windows:
 dotnet publish -r win-x64 -c release
 ```
 
-The build output can be found in __\marvel\bin\Release\netcoreapp2.1\win-x64\publish__
+The build output can be found in __marvel\bin\Release\netcoreapp2.1\win-x64\publish__
 
 Run to build for Linux:
 
@@ -30,7 +30,7 @@ Run to build for Linux:
 dotnet publish -r linux-x64 -c release
 ```
 
-The build output can be found in __\marvel\bin\Release\netcoreapp2.1\linux-x64\publish__
+The build output can be found in __marvel\bin\Release\netcoreapp2.1\linux-x64\publish__
 
 ## Dependencies
 
