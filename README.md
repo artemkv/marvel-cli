@@ -65,11 +65,11 @@ marvel help find
 marvel list
 marvel list --page 3 --size 5
 marvel list --n --page 3 --size 5
-marvel list --fullname "Rick Remender"
+marvel list --fullname "rick"
 marvel list --modifiedsince "09/06/2015 17:20:52"
 marvel list --modifiedsince "2015-01-01 00:00:00"
 marvel list --modifiedsince "2015-01-01 00:00:00" --page 3 --size 5
-marvel list --fullname "Rick Remender" --modifiedsince "09/06/2015 17:20:51"
+marvel list --fullname "rick" --modifiedsince "09/06/2015 17:20:51"
 marvel list --page 3 --size 5 --sortby comicsTotal,desc fullName
 marvel find --id 12976 --n
 marvel addnote --c 12976 --text "Hello note"

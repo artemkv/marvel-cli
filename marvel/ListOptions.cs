@@ -12,7 +12,7 @@ namespace marvel
 	[Verb("list", HelpText = "Shows the lists of creators with sorting and paging.")]
 	class ListOptions : CommonOptions
 	{
-		[Option('f', "fullname", Required = false, HelpText = "Find creator by exact full name match.")]
+		[Option('f', "fullname", Required = false, HelpText = "Find creators by full name substring.")]
 		public string FullName { get; set; }
 
 		[Option('m', "modifiedsince", Required = false, HelpText = "Find creators modified since the given date.")]
@@ -38,7 +38,7 @@ namespace marvel
 				yield return new Example("Normal scenario", new ListOptions { });
 				yield return new Example("Paging", new ListOptions { Page = 3, Size = 20 });
 				yield return new Example("Use modified since filter", new ListOptions { ModifiedSince = new DateTime(2015, 1, 1).ToString(), Page = 2, Size = 20 });
-				yield return new Example("Search by full name", new ListOptions { FullName = "Rick Remender" });
+				yield return new Example("Search by full name", new ListOptions { FullName = "rick" });
 				yield return new Example("Sorting with paging", new ListOptions { Sorting = new List<String>() { "comicsTotal,desc", "fullName" }, Page = 2, Size = 20 });
 				yield return new Example("Provide server url", new FindOptions { Url = "http://192.168.1.8:8080/api/" });
 			}
