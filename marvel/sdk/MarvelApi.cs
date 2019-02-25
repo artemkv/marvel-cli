@@ -59,7 +59,7 @@ namespace marvel.sdk
 			if (modifiedSince != null)
 			{
 				// Here we take responsibility for formatting date the way API expects it.
-				creatorsUrl = creatorsUrl.AddParameter("modifiedSince", modifiedSince.Value.ToString("yyyy-MM-dd'T'HH:mm:ss"));
+				creatorsUrl = creatorsUrl.AddParameter("modifiedSince", modifiedSince.Value.ToString(Constants.DATE_FORMAT));
 			}
 			creatorsUrl = AppendSortingParams(creatorsUrl, sorting);
 			var response = await HttpClientProvider.HttpClient.GetAsync(creatorsUrl);

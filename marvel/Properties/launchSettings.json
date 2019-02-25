@@ -2,7 +2,7 @@
   "profiles": {
     "marvel": {
       "commandName": "Project",
-      "commandLineArgs": "find --id 12976 n"
+      "commandLineArgs": "list  --url http://52.47.149.13:8500/  --modifiedsince \"12/02/2015 14:59:46\""
     }
   }
 }
