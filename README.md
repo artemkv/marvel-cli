@@ -40,7 +40,7 @@ The build output can be found in __marvel\bin\Release\netcoreapp2.1\linux-x64\pu
 
 ## Command line arguments
 
-Run "marvel help" to see the available commands.
+Run "marvel" without arguments or "marvel help" to see the available commands.
 
 ```
 marvel help
