@@ -40,7 +40,7 @@ namespace marvel
 				yield return new Example("Use modified since filter", new ListOptions { ModifiedSince = new DateTime(2015, 1, 1).ToString(), Page = 2, Size = 20 });
 				yield return new Example("Search by full name", new ListOptions { FullName = "rick" });
 				yield return new Example("Sorting with paging", new ListOptions { Sorting = new List<String>() { "comicsTotal,desc", "fullName" }, Page = 2, Size = 20 });
-				yield return new Example("Provide server url", new FindOptions { Url = "http://192.168.1.8:8080/api/" });
+				yield return new Example("Provide server url", new FindOptions { Url = "http://192.168.1.8:8080/" });
 			}
 		}
 	}

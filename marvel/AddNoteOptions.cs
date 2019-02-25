@@ -24,7 +24,7 @@ namespace marvel
 			get
 			{
 				yield return new Example("Normal scenario", new AddNoteOptions { CreatorId = 12976, NoteText = "Hello note" });
-				yield return new Example("Provide server url", new AddNoteOptions { Url = "http://192.168.1.8:8080/api/", CreatorId = 12976, NoteText = "Hello note" });
+				yield return new Example("Provide server url", new AddNoteOptions { Url = "http://192.168.1.8:8080/", CreatorId = 12976, NoteText = "Hello note" });
 			}
 		}
 	}

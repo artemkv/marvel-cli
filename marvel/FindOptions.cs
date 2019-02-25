@@ -25,7 +25,7 @@ namespace marvel
 			{
 				yield return new Example("Normal scenario", new FindOptions { Id = 12976 });
 				yield return new Example("Show notes", new FindOptions { Id = 12976, ShowNotes = true });
-				yield return new Example("Provide server url", new FindOptions { Url = "http://192.168.1.8:8080/api/", Id = 12976 });
+				yield return new Example("Provide server url", new FindOptions { Url = "http://192.168.1.8:8080/", Id = 12976 });
 			}
 		}
 	}
