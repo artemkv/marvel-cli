@@ -14,6 +14,8 @@ It does not provide any validation logic and simply passes the parameters to the
 
 ## Build and run the project
 
+This is .Net Core console application.
+
 Run to build for Windows:
 
 ```
