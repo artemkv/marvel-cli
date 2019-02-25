@@ -63,6 +63,7 @@ marvel help find
 
 ```
 marvel list
+marvel list --url http://192.168.1.8:8080/
 marvel list --page 3 --size 5
 marvel list --n --page 3 --size 5
 marvel list --fullname "rick"
