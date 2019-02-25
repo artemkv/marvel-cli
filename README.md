@@ -63,6 +63,8 @@ marvel help find
 
 ### Examples
 
+For detailed help on command line options, use the tool built-in help. Below some quick examples on tool usage:
+
 ```
 marvel list
 marvel list --url http://192.168.1.8:8080/
