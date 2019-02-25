@@ -22,7 +22,7 @@ namespace marvel.sdk
 		public static async Task<Creator> GetCreatorAsync(string url, int id)
 		{
 			var baseUrl = new Uri(url);
-			var creatorUrl = new Uri(baseUrl, $"creator/{id.ToString()}");
+			var creatorUrl = new Uri(baseUrl, $"api/creator/{id.ToString()}");
 			var response = await HttpClientProvider.HttpClient.GetAsync(creatorUrl);
 
 			if (response.IsSuccessStatusCode)
@@ -49,7 +49,7 @@ namespace marvel.sdk
 			string url, string fullName, DateTime? modifiedSince, int page, int size, IEnumerable<string> sorting)
 		{
 			var baseUrl = new Uri(url);
-			var creatorsUrl = new Uri(baseUrl, @"creators");
+			var creatorsUrl = new Uri(baseUrl, @"api/creators");
 			creatorsUrl = creatorsUrl.AddParameter("page", page.ToString());
 			creatorsUrl = creatorsUrl.AddParameter("size", size.ToString());
 			if (!String.IsNullOrEmpty(fullName))
@@ -90,7 +90,7 @@ namespace marvel.sdk
 			};
 
 			var baseUrl = new Uri(url);
-			var noteUrl = new Uri(baseUrl, $"creator/{creatorId.ToString()}/note");
+			var noteUrl = new Uri(baseUrl, $"api/creator/{creatorId.ToString()}/note");
 
 			var content = new StringContent(JsonConvert.SerializeObject(note));
 			content.Headers.Remove("Content-Type");
@@ -113,7 +113,7 @@ namespace marvel.sdk
 		public static async Task DeleteNoteAsync(string url, int creatorId)
 		{
 			var baseUrl = new Uri(url);
-			var noteUrl = new Uri(baseUrl, $"creator/{creatorId.ToString()}/note");
+			var noteUrl = new Uri(baseUrl, $"api/creator/{creatorId.ToString()}/note");
 
 			var response = await HttpClientProvider.HttpClient.DeleteAsync(noteUrl);
 			if (!response.IsSuccessStatusCode)
